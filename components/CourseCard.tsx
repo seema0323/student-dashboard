@@ -29,18 +29,18 @@ export default function CourseCard({ course, index }: CourseCardProps) {
   }, [course.icon_name]);
 
  const containerVariants: Variants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-  type: "spring" as const,
-  stiffness: 300,
-  damping: 20,
-  delay: index * 0.1,
-},
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "spring" as const,
+      stiffness: 300,
+      damping: 20,
+      delay: index * 0.1,
     },
-  };
+  },
+};
 
   return (
     <motion.article
