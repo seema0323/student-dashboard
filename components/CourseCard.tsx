@@ -41,7 +41,6 @@ export default function CourseCard({ course, index }: CourseCardProps) {
     },
   },
 };
-
   return (
     <motion.article
       variants={containerVariants}
