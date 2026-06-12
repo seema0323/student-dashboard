@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
+import { motion } from "framer-motion";
 import { Course } from "@/types";
 import * as Icons from "lucide-react";
 import { useMemo } from "react";
@@ -28,8 +28,11 @@ export default function CourseCard({ course, index }: CourseCardProps) {
     return iconMap[course.icon_name] || Icons.BookOpen;
   }, [course.icon_name]);
 
- const containerVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
+ const containerVariants = {
+  hidden: {
+    opacity: 0,
+    y: 20,
+  },
   visible: {
     opacity: 1,
     y: 0,
@@ -41,6 +44,7 @@ export default function CourseCard({ course, index }: CourseCardProps) {
     },
   },
 };
+
   return (
     <motion.article
       variants={containerVariants}
