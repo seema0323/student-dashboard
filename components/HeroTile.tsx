@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { springTransition, springHoverTransition } from "@/lib/motion";
 
 interface HeroTileProps {
   name?: string;
@@ -21,9 +22,7 @@ export default function HeroTile({
       opacity: 1,
       y: 0,
       transition: {
-        type: "spring",
-        stiffness: 300,
-        damping: 20,
+        ...springTransition,
         delay: index * 0.1,
       },
     },
@@ -36,7 +35,7 @@ export default function HeroTile({
       animate="visible"
       whileHover={{
         scale: 1.02,
-        transition: { type: "spring", stiffness: 400, damping: 30 },
+        transition: springHoverTransition,
       }}
       className="rounded-2xl border border-zinc-800 bg-gradient-to-br from-zinc-900 via-zinc-950 to-black p-6 md:p-8 overflow-hidden relative group h-full min-h-[300px]"
     >

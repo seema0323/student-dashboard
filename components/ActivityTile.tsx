@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useMemo } from "react";
+import { springTransition, springHoverTransition, chartBarSpringTransition } from "@/lib/motion";
 
 interface ActivityTileProps {
   index?: number;
@@ -14,9 +15,7 @@ export default function ActivityTile({ index = 4 }: ActivityTileProps) {
       opacity: 1,
       y: 0,
       transition: {
-        type: "spring",
-        stiffness: 300,
-        damping: 20,
+        ...springTransition,
         delay: index * 0.1,
       },
     },
@@ -42,7 +41,7 @@ export default function ActivityTile({ index = 4 }: ActivityTileProps) {
       animate="visible"
       whileHover={{
         scale: 1.02,
-        transition: { type: "spring", stiffness: 400, damping: 30 },
+        transition: springHoverTransition,
       }}
       className="rounded-2xl border border-zinc-800 bg-gradient-to-br from-zinc-900 via-zinc-950 to-black p-6 md:p-8 overflow-hidden relative group h-full min-h-[300px]"
     >
@@ -64,10 +63,8 @@ export default function ActivityTile({ index = 4 }: ActivityTileProps) {
               initial={{ height: 0 }}
               animate={{ height: `${(item.activity / 100) * 100}%` }}
               transition={{
+                ...chartBarSpringTransition,
                 duration: 0.8,
-                type: "spring",
-                stiffness: 100,
-                damping: 15,
                 delay: i * 0.03,
               }}
               whileHover={{

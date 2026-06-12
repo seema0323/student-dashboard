@@ -10,6 +10,7 @@ import {
   Menu,
   X,
 } from "lucide-react";
+import { sidebarSpringTransition, navButtonSpringTransition } from "@/lib/motion";
 import { useState } from "react";
 
 const navItems = [
@@ -27,7 +28,7 @@ export default function Sidebar() {
     hidden: { x: -250 },
     visible: {
       x: 0,
-      transition: { type: "spring", stiffness: 300, damping: 30 },
+      transition: sidebarSpringTransition,
     },
   };
 
@@ -37,10 +38,8 @@ export default function Sidebar() {
       opacity: 1,
       x: 0,
       transition: {
+        ...sidebarSpringTransition,
         delay: i * 0.1,
-        type: "spring",
-        stiffness: 300,
-        damping: 30,
       },
     }),
   };
@@ -73,7 +72,7 @@ export default function Sidebar() {
           <motion.div
             initial={{ rotate: -20, opacity: 0 }}
             animate={{ rotate: 0, opacity: 1 }}
-            transition={{ type: "spring", stiffness: 200, damping: 20 }}
+            transition={navButtonSpringTransition}
             className="text-2xl"
           >
             🚀
